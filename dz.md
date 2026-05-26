@@ -1,217 +1,206 @@
-Тк чтоб получить результаты нужно зарегестрироваться ответы с вопросами продублирую (в конце были перепроверены).
-Какой из этих модулей не является встроенным в Node.js?
-
-    http
-    path
-    fs
-    express
-
-    Ответ: express
-
-
-Как экспортировать функциональность из модуля в Node.js (CommonJS)?
-
-    module.exports
-    exports.module
-    exports
-    require.exports
-
-    Ответ: module.exports
-
-
-
-Какое расширение файлов может содержать скомпилированные бинарные модули Node.js?
-
-    .mjs
-    .json
-    .node
-    .js
-
-    Ответ: .node
-
-
-
-Как называется основной файл конфигурации `npm` пакета?
-
-    npm.json
-    config.json
-    package.json
-    node.json
-
-    Ответ: package.json
-
-
-
-Какой инструмент используется для управления пакетами в Node.js?
-
-    node
-    npx
-    nodemon
-    npm
-
-    Ответ: npm
-
-
-
-Как получить доступ к переменным окружения в Node.js?
-
-    process.env
-    environment
-    env
-    env.process
-
-    Ответ: process.env env.process
-
-
-
-Как загрузить внешний модуль в Node.js (CommonJS)?
-
-    load()
-    require()
-    eval()
-    console()
-
-    Ответ: require()
-
-
-
-Какая команда используется для инициализации проекта Node.js?
-
-    npm install
-    npm init
-    npm start
-    npm create
-
-    Ответ: npm init
-
-
-
-Какой глобальный объект существует в Node.js?
-
-    window
-    navigator
-    document
-    global
-
-    Ответ: global
-
-
-
-Какая функция используется для вывода информации в консоль?
-
-    log()
-    echo()
-    console.log()
-    print()
-
-    Ответ: console.log()
-
-
-
-Как установить npm-пакет?
-
-    npm use
-    npm install
-    npm run
-    npm create
-
-    Ответ: npm install
-
-
-
-Какая функция используется для импорта модулей в CommonJS?
-
-    use
-    include
-    require
-    import
-
-    Ответ: require
-
-
-
-Как называется интерактивная среда выполнения команд Node.js?
-
-    REPL
-    API
-    CLI
-    TUI
-
-    Ответ: REPL
-
-
-
-Какая функция отсутствует в Node.js?
-
-    clearInterval
-    console.log
-    setTimeout
-    alert
-
-    Ответ: alert
-
-
-
-Как подключить встроенный модуль `fs`?
-
-    get fs()
-    require("fs")
-    include("fs")
-    fs = import("fs")
-
-    Ответ: require("fs")
-
-
-
-Какое имя файла чаще всего используется как точка входа в Node.js проект?
-
-    index.js
-    main.js
-    server.js
-    entry.js
-
-    Ответ: index.js
-
-
-
-Какой объект отсутствует в Node.js?
-
-    process
-    console
-    document
-    global
-
-    Ответ: document
-
-
-
-Что такое Node.js?
-
-    JavaScript runtime
-    Браузер
-    Операционная система
-    IDE
-
-    Ответ: JavaScript runtime
-
-
-
-Какой метод модуля `fs` не существует?
-
-    fs.openFile()
-    fs.existsSync()
-    fs.writeFile()
-    fs.readFile()
-
-    Ответ: fs.openFile()
-
-
-
-Какой из следующих модулей не существует в стандартной библиотеке Node.js?
-
-    os
-    thread
-    child_process
-    cluster
-
-    Ответ: thread
+1. Вывести в консоль строчку "Hello world"
+console.log("Hello world");
+
+2. Вывести в консоль "Hello world" 150 раз
+for (let i = 0; i < 150; i++) {
+  console.log("Hello world");
+}
+
+3. Вывести в консоль все чётные числа от 2 до 20
+for (let n = 2; n <= 20; n += 2) {
+  console.log(n);
+}
+
+4. Получить в скрипте аргумент(process.argv) перемножить его на 2 и вывести в консоль результат, в виде:
+nodejs script.js 5
+результат: 10
+// multiply.js
+const args = process.argv.slice(2);
+const raw = args[0];
+
+if (raw === undefined) {
+  console.log("Ошибка: не передан аргумент.");
+  process.exit(1);
+}
+
+const num = Number(raw);
+if (Number.isNaN(num)) {
+  console.log("Ошибка: аргумент не является числом.");
+  process.exit(1);
+}
+
+const result = num * 2;
+console.log(`результат: ${result}`);
+
+5. Получить аргумет. Если он больше 0- вывести в консоль "Hello", если меньше - "olleH":
+nodejs script.js 1
+Hello
+nodejs script.js 1
+olleH
+// checkSign.js
+const arg = process.argv[2];
+
+if (arg === undefined) {
+  console.log("Ошибка: не передан аргумент.");
+  process.exit(1);
+}
+
+const n = Number(arg);
+if (Number.isNaN(n)) {
+  console.log("Ошибка: аргумент не является числом.");
+  process.exit(1);
+}
+
+if (n > 0) {
+  console.log("Hello");
+} else if (n < 0) {
+  console.log("olleH");
+} else {
+  console.log("Ноль");
+}
+
+
+6. То же самое, что и в № 4, но если аргумент = 0, вывести в консоль "Zero"
+nodejs script.js 1
+Hello
+nodejs script.js 1
+olleH
+nodejs script.js 0
+Zero
+// checkSignZero.js
+const raw = process.argv[2];
+
+if (raw === undefined) {
+  console.log("Ошибка: не передан аргумент.");
+  process.exit(1);
+}
+
+const n = Number(raw);
+if (Number.isNaN(n)) {
+  console.log("Ошибка: аргумент не является числом.");
+  process.exit(1);
+}
+
+if (n > 0) {
+  console.log("Hello");
+} else if (n < 0) {
+  console.log("olleH");
+} else {
+  console.log("Zero");
+}
+
+7. Калькулятор light. Получить 2 аргумента, перемножить их и вывести результат в консоль:
+nodejs script.js 2 3
+Result: 6
+// calc.js
+const [aRaw, bRaw] = process.argv.slice(2);
+
+if (aRaw === undefined || bRaw === undefined) {
+  console.log("Ошибка: требуется 2 аргумента.");
+  process.exit(1);
+}
+
+const a = Number(aRaw);
+const b = Number(bRaw);
+
+if (Number.isNaN(a) || Number.isNaN(b)) {
+  console.log("Ошибка: аргументы должны быть числами.");
+  process.exit(1);
+}
+
+console.log(`Result: ${a * b}`);
+
+8. Калькулятор advanced. Получить 3 аргумента: 1 первый аргумент- 1 число, 2ой аргумент- мат. операция, 3ий аргумент - второе число. Выполнить математическую операцию переданную во 2ом аргументе и вывести в консоль результат:
+nodejs script.js 2 "*" 3
+Result: 6
+nodejs script.js 2 "-" 3
+Result: -1
+nodejs script.js 2 "+" 3
+Result: 5
+nodejs script.js 2 "/" 3
+Result: 0.6666666
+// advancedCalc.js
+const [aRaw, op, bRaw] = process.argv.slice(2);
+
+if (aRaw === undefined || op === undefined || bRaw === undefined) {
+  console.log("Ошибка: требуется 3 аргумента: число операция число");
+  process.exit(1);
+}
+
+const a = Number(aRaw);
+const b = Number(bRaw);
+if (Number.isNaN(a) || Number.isNaN(b)) {
+  console.log("Ошибка: первый и третий аргументы должны быть числами.");
+  process.exit(1);
+}
+
+let result;
+switch (op) {
+  case '+':
+    result = a + b;
+    break;
+  case '-':
+    result = a - b;
+    break;
+  case '*':
+  case 'x':
+  case 'X':
+    result = a * b;
+    break;
+  case '/':
+    if (b === 0) {
+      console.log("Ошибка: деление на ноль.");
+      process.exit(1);
+    }
+    result = a / b;
+    break;
+  default:
+    console.log("Ошибка: неизвестная операция. Допустимо: + - * /");
+    process.exit(1);
+}
+
+console.log(`Result: ${result}`);
+
+
+9. Вывести в консоль букву Z нарисованную звёздочками. Размер 5Х5 символов:
+*****
+   * 
+  *
+ *
+*****
+// drawZ.js
+console.log("*****");
+console.log("   * ");
+console.log("  *  ");
+console.log(" *   ");
+console.log("*****");
+
+10. То же самое что и в п.9 но размер буквы передаётся в 1 аргументе:
+nodejs script.js 5
+*****
+   * 
+  *
+ *
+*****
+nodejs script.js 3
+***
+ * 
+***
+// drawZ.js
+const raw = process.argv[2];
+const n = Number(raw);
+
+if (!raw || Number.isNaN(n) || !Number.isInteger(n) || n < 3 || n > 10) {
+  console.log("Error, argument should be between 3 and 10");
+  process.exit(1);
+}
+
+console.log("*".repeat(n));
+
+for (let i = 1; i <= n - 2; i++) {
+  const pos = n - 1 - i; 
+  const line = " ".repeat(pos) + "*" + " ".repeat(n - pos - 1);
+  console.log(line);
+}
+
+console.log("*".repeat(n));
